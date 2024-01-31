@@ -1,15 +1,15 @@
+import {useSelector} from "react-redux";
+import {getCompletedTasks} from "../features/todoSlice.js";
+import Section from "../ui/Section.jsx";
+import Task from "../ui/Task.jsx";
+
 function CompletedTasks() {
+    const completedTask = useSelector(getCompletedTasks);
+
     return (
-        <section className={"flex flex-col gap-2"}>
-            <header className={"text-lg"}>
-                Completed Tasks
-            </header>
-            <section className={"flex flex-col gap-1"}>
-                <p>Task 1</p>
-                <p>Task 2</p>
-                <p>Task 3</p>
-            </section>
-        </section>
+        <Section heading={"Completed Tasks"} type={'completedTask'}>
+            {completedTask?.map(task => <Task heading={task.task} key={task.taskId}>{task.description}</Task>)}
+        </Section>
     );
 }
 

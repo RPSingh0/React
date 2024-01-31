@@ -1,15 +1,15 @@
+import {useSelector} from "react-redux";
+import Section from "../ui/Section.jsx";
+import Task from "../ui/Task.jsx";
+import {getBlockedTasks} from "../features/todoSlice.js";
+
 function BlockedTasks() {
+    const blockedTasks = useSelector(getBlockedTasks);
+
     return (
-        <section className={"flex flex-col gap-2"}>
-            <header className={"text-lg"}>
-                Blocked Tasks
-            </header>
-            <section className={"flex flex-col gap-1"}>
-                <p>Task 1</p>
-                <p>Task 2</p>
-                <p>Task 3</p>
-            </section>
-        </section>
+        <Section heading={"Blocked"} type={'blockedTask'}>
+            {blockedTasks?.map(task => <Task heading={task.task} key={task.taskId}>{task.description}</Task>)}
+        </Section>
     );
 }
 

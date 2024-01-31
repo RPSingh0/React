@@ -1,22 +1,15 @@
-function Section({heading, type, children}) {
+function Section({heading, children}) {
 
-    const baseStyle = 'flex flex-col gap-2 w-full sm:w-2/3';
-
-    const sectionType = {
-        newTask: ' border-sky-300',
-        inProgressTask: ' border-teal-400',
-        blockedTask: ' border-red-400',
-        completedTask: ' border-green-400'
-    }
+    const baseStyle = 'flex flex-col gap-2 w-full sm:w-2/3 overflow-auto';
 
     return (
-        <section className={baseStyle + sectionType[type]}>
+        <section className={baseStyle}>
             <header className={"text-lg font-bold"}>
                 {heading}
             </header>
-            <section className={"flex flex-col gap-1 border-solid border-2 rounded-lg  px-4 py-2"}>
+            <div className={"overflow-auto flex flex-col sm:gap-6 gap-8 hiddenScrollbar"}>
                 {children}
-            </section>
+            </div>
         </section>
     );
 }
