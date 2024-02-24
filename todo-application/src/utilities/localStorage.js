@@ -1,6 +1,6 @@
-export const loadState = () => {
+export const loadState = (key) => {
     try {
-        const serializedState = localStorage.getItem('globalState');
+        const serializedState = localStorage.getItem(key);
         if (serializedState === null) {
             return undefined;
         }
@@ -10,11 +10,11 @@ export const loadState = () => {
     }
 };
 
-export const saveState = (state) => {
+export const saveState = (key, state) => {
     try {
         const serializedState = JSON.stringify(state);
-        localStorage.setItem('globalState', serializedState);
+        localStorage.setItem(key, serializedState);
     } catch (err) {
-        // Handle errors here
+        console.log('Unable to save! Please contact admin :(');
     }
 };
