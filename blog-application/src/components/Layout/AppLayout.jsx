@@ -10,7 +10,7 @@ function AppLayout() {
                 className={"flex flex-row items-center justify-between py-4 w-[100%] backdrop-filter backdrop-blur-lg bg-opacity-50 border-b border-gray-400"}>
                 <Header/>
             </header>
-            <main className={"mt-5 w-full overflow-auto hiddenScrollbar"}>
+            <main className={"mt-5 w-full overflow-auto hiddenScrollbar relative"}>
                 <Outlet/>
             </main>
                 <Footer/>

@@ -1,7 +1,7 @@
 import {useState} from "react";
 import MembershipButton from "../Button/MembershipButton.jsx";
 import Button from "../Button/Button.jsx";
-import getTitle from "../../../Utilities/Utilities.js";
+import {getTitle} from "../../../utilities/Utilities.js";
 
 const plan = {
     starter: {
@@ -28,7 +28,7 @@ function Membership() {
 
     return (
         <div className={"w-full h-full flex flex-col items-center justify-center"}>
-            <div className={"bg-slate-400 grid grid-cols-[3fr,1fr] px-4 py-8 rounded-lg"}>
+            <div className={"bg-gray-50 grid grid-cols-[3fr,1fr] px-4 py-8 rounded-lg"}>
                 <div className={"grid grid-rows-[auto,auto,1fr] gap-y-3 border-r-2 border-black px-8"}>
                     <p className={"text-6xl mb-10 text-slate-800 font-bold"}>Help yourself grow by purchasing a plan</p>
                     <p className={"text-slate-800 text-xl font-bold"}>Choose a pricing plan:</p>

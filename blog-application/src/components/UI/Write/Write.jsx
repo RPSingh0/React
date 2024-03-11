@@ -1,6 +1,8 @@
 function Write() {
     return (
-        <div>Write!</div>
+        <div>
+            
+        </div>
     );
 }
 
