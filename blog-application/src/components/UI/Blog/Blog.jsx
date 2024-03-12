@@ -1,6 +1,6 @@
 import {useParams} from "react-router-dom";
 import {useQuery} from "@tanstack/react-query";
-import {getBlog} from "../../../services/blogs/blogsService.js";
+import {getBlogService} from "../../../services/blogs/blogsService.js";
 import BlogCard from "../Dashboard/BlogCard.jsx";
 import ReactMarkdown from "react-markdown";
 import Spinner from "../Spinner/Spinner.jsx";
@@ -11,7 +11,7 @@ function Blog() {
 
     const {isLoading, data, error} = useQuery({
         queryKey: [`blog/${blogId}`],
-        queryFn: () => getBlog(blogId)
+        queryFn: () => getBlogService(blogId)
     })
 
     return (

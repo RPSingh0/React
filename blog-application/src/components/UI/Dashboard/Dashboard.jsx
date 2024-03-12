@@ -1,5 +1,5 @@
 import {useQuery} from "@tanstack/react-query";
-import {getAllBlogs} from "../../../services/blogs/blogsService.js";
+import {getAllBlogsService} from "../../../services/blogs/blogsService.js";
 import BlogCard from "./BlogCard.jsx";
 import Spinner from "../Spinner/Spinner.jsx";
 
@@ -7,7 +7,7 @@ function Dashboard() {
 
     const {isLoading, data, error} = useQuery({
         queryKey: ['blogs'],
-        queryFn: getAllBlogs
+        queryFn: getAllBlogsService
     });
 
     return (

@@ -1,11 +1,22 @@
 import {NavLink} from "react-router-dom";
 
-export function InputField({id, type, label, placeholder}) {
+export function InputField({id, type, label, placeholder, required}) {
     return (
         <div className={"flex flex-col gap-y-2"}>
             <label htmlFor={id}>{label}</label>
-            <input id={id} type={type} placeholder={placeholder}
+            <input id={id} type={type} placeholder={placeholder} required={required}
                    className={"px-4 block py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400 focus-visible:outline-none text-gray-800"}/>
+        </div>
+    );
+}
+
+export function FileUpload({id, label, required}) {
+    return (
+        <div className={"flex flex-col gap-y-2"}>
+            <label htmlFor={id}>{label}</label>
+            <input
+                className="w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-slate-300 focus:outline-none"
+                type="file" required={required}/>
         </div>
     );
 }
