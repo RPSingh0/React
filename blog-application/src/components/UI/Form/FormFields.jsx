@@ -1,11 +1,20 @@
 import {NavLink} from "react-router-dom";
+import {useController} from "react-hook-form";
 
-export function InputField({id, type, label, placeholder, required}) {
+export function InputField({control, name, label, ...rest}) {
+
+    const {field, fieldState} = useController({name, control});
+
     return (
         <div className={"flex flex-col gap-y-2"}>
-            <label htmlFor={id}>{label}</label>
-            <input id={id} type={type} placeholder={placeholder} required={required}
+            <label htmlFor={name}>{label}</label>
+            <input id={name} {...field} {...rest}
                    className={"px-4 block py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400 focus-visible:outline-none text-gray-800"}/>
+            {fieldState.error && (
+                <span className={"text-red-500"}>
+                    {fieldState.error.message}
+                </span>
+            )}
         </div>
     );
 }

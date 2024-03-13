@@ -20,7 +20,21 @@ exports.getAllUsers = catchAsync(async (req, res, next) => {
  * This function will return a single user by id
  */
 exports.getUser = catchAsync(async (req, res, next) => {
-    const user = await User.findById(req.param.id).select('name email avatar profession');
+    const user = await User.findById(req.params.id).select('name email avatar profession');
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            user: user
+        }
+    });
+});
+
+/**
+ * This function will return a single user by email
+ */
+exports.getUserByEmail = catchAsync(async (req, res, next) => {
+    const user = await User.find({email: req.params.email}).select('name email avatar profession');
 
     res.status(200).json({
         status: 'success',

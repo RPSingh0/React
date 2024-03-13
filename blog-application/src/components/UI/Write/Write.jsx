@@ -3,6 +3,8 @@ import Button from "../Button/Button.jsx";
 import {useForm} from "react-hook-form";
 import toast from "react-hot-toast";
 import {useCreateBlog} from "../../../services/blogs/useCreateBlog.js";
+import {useMutation} from "@tanstack/react-query";
+import {createBlogService} from "../../../services/blogs/blogsService.js";
 
 function Write() {
 
@@ -26,14 +28,6 @@ function Write() {
                     toast.dismiss(toastId);
                 }
             });
-
-
-            // console.log(fileContent);
-            // setTimeout(() => {
-            //
-            //     toast.dismiss(toastId)
-            //     toast.success("Blog written successfully, please check in All blogs")
-            // }, 3000);
         }
 
         reader.readAsText(file)
