@@ -20,21 +20,3 @@ export async function getBlogService(id) {
 
     return blog;
 }
-
-export async function createBlogService(data) {
-
-    const dummyUserId = '65e9fb467fbca68f64bc2c97';
-
-    await fetch(`${BASE_URL}/blogs/create`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            title: data.title,
-            shortDescription: data.shortDescription,
-            blogContent: data.blogContent,
-            writtenBy: dummyUserId
-        })
-    });
-}
