@@ -5,3 +5,8 @@
 .hiddenScrollbar::-webkit-scrollbar {
     display: none;
 }
+
+.active {
+    background-color: #e2e8f0;
+    color: #3b82f6;
+}
