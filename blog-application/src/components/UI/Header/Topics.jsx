@@ -57,7 +57,7 @@ const techTopics = [
 function Topics() {
     return (
         <div className={"w-full h-full flex flex-col gap-y-4 overflow-auto border-b-2"}>
-            <p className={"flex flex-row items-center text-xl gap-x-4 px-2"}>
+            <p className={"flex flex-row items-center xl:text-xl lg:text-lg md:text-md sm:text-sm gap-x-4 px-2"}>
                 <FaBookOpenReader/> Available topics
             </p>
             <div className={"w-full h-full overflow-auto"}>

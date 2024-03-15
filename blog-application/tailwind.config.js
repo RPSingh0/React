@@ -15,6 +15,13 @@ export default {
             animation: {
                 'spin-slow': 'spin-slow 10s linear infinite',
             },
+            screens: {
+                '1690': '1690px',
+                '1366': '1366px',
+                '1210': '1210px',
+                '860': '860px',
+                '766': '766px'
+            }
         },
     },
     plugins: [require('@tailwindcss/typography')],
