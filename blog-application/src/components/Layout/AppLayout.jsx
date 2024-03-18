@@ -3,10 +3,11 @@ import {Outlet} from "react-router-dom";
 import DescriptionHeader from "../UI/Header/DescriptionHeader.jsx";
 import {BrowserView, MobileView} from "react-device-detect";
 import {useState} from "react";
+import {useSelector} from "react-redux";
 
 function AppLayout() {
 
-    const [isNavBarOpen, setIsNavBarOpen] = useState(false);
+    const {isHeaderOpen} = useSelector(state => state.ui);
 
     return (
         <>
@@ -24,8 +25,8 @@ function AppLayout() {
             </BrowserView>
             <MobileView>
                 <main className={"w-dvw h-dvh grid grid-rows-[auto,1fr] relative gap-y-4"}>
-                    {isNavBarOpen && <Header isOpen={isNavBarOpen}/>}
-                    <DescriptionHeader openNavigation={setIsNavBarOpen}/>
+                    {isHeaderOpen && <Header/>}
+                    <DescriptionHeader/>
                     <div className={"px-4 pb-4 overflow-auto"}>
                         <Outlet/>
                     </div>

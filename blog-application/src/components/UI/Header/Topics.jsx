@@ -1,67 +1,30 @@
 import {FaBookOpenReader} from "react-icons/fa6";
 import Topic from "./Topic.jsx";
+import {useQuery} from "@tanstack/react-query";
+import {getAllBlogTopicService} from "../../../services/blogs/blogsService.js";
+import GridLoading from "../Spinner/GridLoading.jsx";
 
-const techTopics = [
-    "Artificial Intelligence in Healthcare",
-    "Quantum Computing Applications",
-    "Blockchain Technology in Supply Chain Management",
-    "Augmented Reality in Education",
-    "Internet of Things (IoT) Security Challenges",
-    "5G Network Evolution",
-    "Cloud Computing Trends",
-    "Cybersecurity Threats and Mitigation Strategies",
-    "Data Science in Marketing Analytics",
-    "Robotics and Automation in Manufacturing",
-    "Virtual Reality Entertainment Experiences",
-    "Edge Computing for IoT Devices",
-    "Machine Learning Algorithms",
-    "Cryptocurrency Regulations",
-    "Big Data Analytics in Retail",
-    "Biometric Authentication Systems",
-    "Autonomous Vehicles Technology",
-    "Natural Language Processing Applications",
-    "Wearable Technology Innovations",
-    "E-commerce Platforms and Innovations",
-    "Mobile App Development Trends",
-    "Open Source Software Communities",
-    "Genetic Algorithms in Optimization Problems",
-    "Deep Learning Frameworks Comparison",
-    "3D Printing in Prototyping",
-    "Human-Computer Interaction Principles",
-    "Renewable Energy Technologies",
-    "Internet Privacy Concerns",
-    "Graph Databases for Social Networks",
-    "Space Exploration Technologies",
-    "Remote Work Collaboration Tools",
-    "Neural Networks in Image Recognition",
-    "Virtual Assistants in Daily Life",
-    "Dark Web and Cybercrime",
-    "Self-Driving Cars Safety Challenges",
-    "Augmented Reality for Retail Shopping",
-    "Quantum Cryptography Advancements",
-    "Artificial General Intelligence Prospects",
-    "Cloud Gaming Platforms",
-    "IoT in Agriculture",
-    "Health Tech Innovations",
-    "Blockchain for Digital Identity Management",
-    "Chatbot Applications in Customer Service",
-    "Machine Translation Technologies",
-    "Data Visualization Tools",
-    "Biotechnology Breakthroughs",
-    "Smart Cities Infrastructure",
-    "Cybersecurity in Smart Homes",
-    "Augmented Reality in Architecture",
-    "Speech Recognition Systems"
+const containers = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24
 ];
 
 function Topics() {
+
+    const {isLoading, data, error} = useQuery({
+        queryKey: ['topics'],
+        queryFn: getAllBlogTopicService
+    });
+
     return (
-        <div className={"w-full h-full flex flex-col gap-y-4 overflow-auto border-b-2"}>
+
+        <div className={"w-full h-full flex flex-col gap-y-4 overflow-auto border-b-2 relative"}>
             <p className={"flex flex-row items-center xl:text-xl lg:text-lg md:text-md sm:text-sm gap-x-4 px-2"}>
                 <FaBookOpenReader/> Available topics
             </p>
-            <div className={"w-full h-full overflow-auto"}>
-                {techTopics.map(t => <Topic name={t} key={t}/>)}
+            <div className={"w-full h-full overflow-auto grid grid-cols-1 gap-y-4"}>
+                {isLoading && containers.map(x => <GridLoading key={x}/>)}
+                {!isLoading && !error && data.data.tags.map(t => <Topic name={t} key={t}/>)}
+                {error && containers.map(x => <GridLoading key={x}/>)}
             </div>
         </div>
     );

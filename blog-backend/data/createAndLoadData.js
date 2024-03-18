@@ -1,6 +1,5 @@
 const fs = require('fs');
 const mongoose = require('mongoose');
-const User = require('../models/userModel');
 const Blog = require('../models/blogModel');
 const dotenv = require("dotenv");
 
@@ -22,12 +21,9 @@ mongoose.connect(DB, {
 });
 
 const Blogs = JSON.parse(fs.readFileSync(`${__dirname}/blog-backend.blogs.json`, 'utf-8'));
-const Users = JSON.parse(fs.readFileSync(`${__dirname}/blog-backend.users.json`, 'utf-8'));
 
 (async () => {
     try {
-        await User.create(Users);
-        console.log('Users added!');
         await Blog.create(Blogs);
         console.log('Blogs added!');
     } catch (error) {

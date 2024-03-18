@@ -6,6 +6,10 @@ import PageNotFound from "./components/UI/PageNotFound/PageNotFound.jsx";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import Blog from "./components/UI/Blog/Blog.jsx";
+import {Provider} from "react-redux";
+import store from "./store.js";
+import TopicBlogs from "./components/UI/Topic/TopicBlogs.jsx";
+import Favourites from "./components/UI/Favourite/Favourites.jsx";
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -17,6 +21,7 @@ const queryClient = new QueryClient({
 
 export default function App() {
     return (
+        <Provider store={store}>
             <QueryClientProvider client={queryClient}>
                 <ReactQueryDevtools initialIsOpen={false}/>
                 <BrowserRouter>
@@ -25,11 +30,14 @@ export default function App() {
                             <Route index element={<Navigate replace={true} to={"dashboard"}/>}/>
                             <Route path={"dashboard"} element={<Dashboard/>}/>
                             <Route path={"blog/:blogId"} element={<Blog/>}/>
+                            <Route path={"topics/:topic"} element={<TopicBlogs/>}/>
+                            <Route path={"favourites"} element={<Favourites/>}/>
                             <Route path={"our-story"} element={<OurStory/>}/>
                             <Route path={"*"} element={<PageNotFound/>}/>
                         </Route>
                     </Routes>
                 </BrowserRouter>
             </QueryClientProvider>
+        </Provider>
     );
 }

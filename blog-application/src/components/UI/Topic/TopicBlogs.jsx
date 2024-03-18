@@ -1,13 +1,16 @@
+import {useParams} from "react-router-dom";
 import {useQuery} from "@tanstack/react-query";
-import {getAllBlogsService, parseAllBlogs} from "../../../services/blogs/blogsService.js";
-import BlogCard from "../Blog/BlogCard.jsx";
+import {getAllBlogsByTopicService, getAllBlogsService} from "../../../services/blogs/blogsService.js";
 import Spinner from "../Spinner/Spinner.jsx";
+import BlogCard from "../Blog/BlogCard.jsx";
 
-function Dashboard() {
+function TopicBlogs() {
+
+    const {topic} = useParams();
 
     const {isLoading, data, error} = useQuery({
-        queryKey: ['blogs'],
-        queryFn: getAllBlogsService
+        queryKey: [`${topic}`],
+        queryFn: () => getAllBlogsByTopicService(topic)
     });
 
     return (
@@ -19,11 +22,15 @@ function Dashboard() {
                 </div> :
                 <div className={'grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-8 gap-y-8'}>
                     {isLoading && <Spinner/>}
-                    {!isLoading && !error && parseAllBlogs(data).map(blog => <BlogCard blog={blog} key={blog.blogId}/>)}
+                    {!isLoading && !error && data.data.blogs.map(blog => <BlogCard blog={blog} key={blog._id}/>)}
                 </div>
             }
         </>
     );
+
+    return (
+        <div>Topics will be rendered here {topic}</div>
+    );
 }
 
-export default Dashboard;
+export default TopicBlogs;
