@@ -3,7 +3,6 @@ import {useQuery} from "@tanstack/react-query";
 import {getBlogService, parseSingleBlog} from "../../../services/blogs/blogsService.js";
 import ReactMarkdown from "react-markdown";
 import Spinner from "../Spinner/Spinner.jsx";
-import BlogCard from "./BlogCard.jsx";
 
 function Blog() {
 

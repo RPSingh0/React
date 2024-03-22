@@ -11,10 +11,6 @@ const blogSchema = new mongoose.Schema({
         required: [true, 'A blog must have a title'],
         maxlength: [100, 'A blog\'s title should not be more then 100 characters long']
     },
-    coverImage: {
-        type: String,
-        required: ['A blog must have a cover image']
-    },
     blogContent: {
         type: String,
         required: [true, 'Blog should have some text in it'],
@@ -24,8 +20,7 @@ const blogSchema = new mongoose.Schema({
     tags: [
         {
             type: String,
-            trim: true,
-            lowercase: true
+            trim: true
         }
     ],
     favourite: {

@@ -56,9 +56,19 @@ exports.getAllTopics = catchAsync(async (req, res, next) => {
  * This function will return blogs filtered by topic
  */
 exports.getBlogsByTopic = catchAsync(async (req, res, next) => {
-    const blogs = await Blog.find({
-        tags: {$in: [req.params.topic]}
-    }).select('blogId title blogContent tags createdOn -_id');
+
+    let blogs;
+    // if there are query fields to get selective data
+    if (req.query.fields) {
+        const {fields} = req.query;
+        blogs = await Blog.find({
+            tags: {$in: [req.params.topic]}
+        }).select(fields.split(',').join(' ')).select('-_id blogId');
+    } else {
+        blogs = await Blog.find({
+            tags: {$in: [req.params.topic]}
+        }).select('blogId title blogContent tags createdOn -_id');
+    }
 
     res.status(blogs.length !== 0 ? 200 : 204).json({
         status: 'success',
@@ -73,10 +83,20 @@ exports.getBlogsByTopic = catchAsync(async (req, res, next) => {
  * This function will return all the favourite blogs
  */
 exports.getFavouriteBlogs = catchAsync(async (req, res, next) => {
-    const blogs = await Blog.find({
-        favourite: true
-    }).select('blogId title blogContent tags createdOn -_id');
 
+    let blogs;
+    // if there are query fields to get selective data
+    if (req.query.fields) {
+        const {fields} = req.query;
+        blogs = await Blog.find({
+            favourite: true
+        }).select(fields.split(',').join(' ')).select('-_id blogId');
+    } else {
+        blogs = await Blog.find({
+            favourite: true
+        }).select('blogId title blogContent tags createdOn -_id');
+    }
+    
     res.status(blogs.length !== 0 ? 200 : 204).json({
         status: 'success',
         results: blogs.length,

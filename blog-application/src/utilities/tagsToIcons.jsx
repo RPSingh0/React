@@ -1,6 +1,52 @@
-import {FaJava, FaPython, FaReact, FaRust, FaTerminal} from "react-icons/fa";
-import {SiGnubash, SiSpring, SiSpringboot, SiTailwindcss} from "react-icons/si";
+import {
+    FaAws,
+    FaBootstrap,
+    FaCode,
+    FaCss3,
+    FaDocker,
+    FaGlobeAsia,
+    FaHtml5,
+    FaJava, FaMagic,
+    FaNodeJs,
+    FaPython,
+    FaReact,
+    FaRust, FaSync,
+    FaTerminal
+} from "react-icons/fa";
+import {
+    SiAmazoncloudwatch,
+    SiAmazondynamodb,
+    SiAmazonec2,
+    SiAmazonecs,
+    SiAmazonroute53,
+    SiAmazons3,
+    SiAmazonsqs,
+    SiAwslambda,
+    SiFastapi,
+    SiFlask,
+    SiGnubash,
+    SiKubernetes,
+    SiMui,
+    SiNumpy,
+    SiPandas,
+    SiPostman,
+    SiSpring,
+    SiSpringboot,
+    SiSwagger,
+    SiTailwindcss,
+    SiTensorflow,
+    SiTypescript,
+    SiVisualstudiocode
+} from "react-icons/si";
 import {IoLogoJavascript} from "react-icons/io";
+import {TbApi, TbFishHook, TbScript} from "react-icons/tb";
+import {DiDjango} from "react-icons/di";
+import {MdHttp, MdOutlineMonitorHeart, MdOutlinePublish} from "react-icons/md";
+import {GiLevelFourAdvanced, GiLevelThreeAdvanced, GiLevelTwoAdvanced} from "react-icons/gi";
+import {AiFillDatabase} from "react-icons/ai";
+import {GoLog} from "react-icons/go";
+import {GrDeploy} from "react-icons/gr";
+import {RiTestTubeFill} from "react-icons/ri";
 
 export const tagsToIcons = {
     python: <FaPython/>,
@@ -11,6 +57,49 @@ export const tagsToIcons = {
     javascript: <IoLogoJavascript/>,
     terminal: <FaTerminal/>,
     bash: <SiGnubash/>,
-    spring: <SiSpring />,
-    springboot: <SiSpringboot />
+    spring: <SiSpring/>,
+    springboot: <SiSpringboot/>,
+    api: <TbApi/>,
+    aws: <FaAws/>,
+    awsS3: <SiAmazons3/>,
+    awsLambda: <SiAwslambda/>,
+    awsEc2: <SiAmazonec2/>,
+    awsSqs: <SiAmazonsqs/>,
+    awsCloudwatch: <SiAmazoncloudwatch/>,
+    awsDinomoDb: <SiAmazondynamodb/>,
+    awsEcs: <SiAmazonecs/>,
+    awsRoute53: <SiAmazonroute53/>,
+    docker: <FaDocker/>,
+    nodejs: <FaNodeJs/>,
+    typescript: <SiTypescript/>,
+    bootstrap: <FaBootstrap/>,
+    materialUi: <SiMui/>,
+    vscode: <SiVisualstudiocode/>,
+    kubernetes: <SiKubernetes/>,
+    postman: <SiPostman/>,
+    swagger: <SiSwagger/>,
+    django: <DiDjango/>,
+    flask: <SiFlask/>,
+    fastApi: <SiFastapi/>,
+    http: <MdHttp/>,
+    web: <FaGlobeAsia/>,
+    tensorflow: <SiTensorflow/>,
+    pandas: <SiPandas/>,
+    numpy: <SiNumpy/>,
+    css: <FaCss3/>,
+    reactHooks: <TbFishHook/>,
+    basic: <GiLevelTwoAdvanced/>,
+    intermediate: <GiLevelThreeAdvanced/>,
+    advance: <GiLevelFourAdvanced/>,
+    coding: <FaCode/>,
+    database: <AiFillDatabase/>,
+    monitor: <MdOutlineMonitorHeart/>,
+    logs: <GoLog/>,
+    script: <TbScript/>,
+    hosting: <MdOutlinePublish/>,
+    html: <FaHtml5/>,
+    asynchronous: <FaSync/>,
+    deployment: <GrDeploy />,
+    testing: <RiTestTubeFill />,
+    tricks: <FaMagic />
 };

@@ -2,15 +2,15 @@ const fs = require('fs');
 
 const HOST = 'http://127.0.0.1:3000';
 const URL = `${HOST}/api/v1/blog/create`;
-const data = fs.readFileSync('C:\\Users\\Rupinder\\Documents\\ReactProjects\\blog-backend\\blog_data.txt');
+const data = fs.readFileSync('C:\\Users\\Rupinder\\Documents\\ReactProjects\\blog-backend\\data\\vscode_tricks_coding.txt', 'utf-8');
 
 (async function () {
 
     const requestBody = {
-        "title": "Java and Spring Boot: A Comprehensive Guide",
+        "title": "The Unseen Wonders of VSCode: Exploring Hidden Tricks",
         "blogContent": data,
         "tags": [
-            "java", "spring"
+            "vscode", "tricks"
         ],
         "favourite": true,
         "secreteKey": [
@@ -21,13 +21,16 @@ const data = fs.readFileSync('C:\\Users\\Rupinder\\Documents\\ReactProjects\\blo
 
     try {
         const response = await fetch(`${URL}`, {
+            headers: {
+                'Content-type': 'application/json'
+            },
             method: 'POST',
             body: JSON.stringify(requestBody)
         });
-        return await response;
+        return await response.json();
     } catch (error) {
         console.log(error);
     }
 })().then((res) => {
-    console.log(res);
+    console.log(res.status);
 });

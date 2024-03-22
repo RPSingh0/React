@@ -22,7 +22,7 @@ function TopicBlogs() {
                 </div> :
                 <div className={'grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-8 gap-y-8'}>
                     {isLoading && <Spinner/>}
-                    {!isLoading && !error && data.data.blogs.map(blog => <BlogCard blog={blog} key={blog._id}/>)}
+                    {!isLoading && !error && data.data.blogs.map(blog => <BlogCard blog={blog} key={blog.blogId}/>)}
                 </div>
             }
         </>

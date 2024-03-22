@@ -1,7 +1,7 @@
-const BASE_URL = 'http://127.0.0.1:3000/api/v1';
+const BASE_URL = 'https://5398-212-102-46-72.ngrok-free.app/api/v1';
 
 export async function getAllBlogsService() {
-    let blogs = await fetch(`${BASE_URL}/blog/all`, {
+    let blogs = await fetch(`${BASE_URL}/blog/all?fields=blogId,title,createdOn,tags`, {
         method: 'GET'
     });
 
@@ -18,8 +18,6 @@ export async function getBlogService(id) {
     let blog = await fetch(`${BASE_URL}/blog/byId/${id}`, {
         method: 'GET'
     });
-
-    console.log(blog);
 
     if (blog.status === 204) {
         throw new Error('Data not found!');
@@ -45,7 +43,7 @@ export async function getAllBlogTopicService() {
 }
 
 export async function getAllBlogsByTopicService(topic) {
-    let blogs = await fetch(`${BASE_URL}/blog/byTopic/${topic}`, {
+    let blogs = await fetch(`${BASE_URL}/blog/byTopic/${topic}?fields=blogId,title,createdOn,tags`, {
         method: 'GET'
     });
 
@@ -59,7 +57,7 @@ export async function getAllBlogsByTopicService(topic) {
 }
 
 export async function getFavouriteBlogs() {
-    let blogs = await fetch(`${BASE_URL}/blog/favourite`, {
+    let blogs = await fetch(`${BASE_URL}/blog/favourite?fields=blogId,title,createdOn,tags`, {
         method: 'GET'
     });
 

@@ -13,7 +13,7 @@ function BlogCard({blog}) {
                 {tags.map(t => <TopicIcon name={t} key={t}/>)}
             </div>
             <div className={"flex flex-col justify-between"}>
-                <p className={"text-gray-800 font-bold text-2xl"}>{title}</p>
+                <p className={"text-gray-700 font-bold text-2xl"}>{title}</p>
                 <p>{getFormattedDate(createdOn)}</p>
             </div>
         </NavLink>
