@@ -2,7 +2,6 @@ import Header from "../UI/Header/Header.jsx";
 import {Outlet} from "react-router-dom";
 import DescriptionHeader from "../UI/Header/DescriptionHeader.jsx";
 import {BrowserView, MobileView} from "react-device-detect";
-import {useState} from "react";
 import {useSelector} from "react-redux";
 
 function AppLayout() {
